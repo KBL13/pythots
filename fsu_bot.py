@@ -60,6 +60,10 @@ def student_central(driver):
     driver.switch_to.frame(frame)
     enroll_button = driver.find_element_by_id("DERIVED_SSS_SCR_SSS_LINK_ANCHOR3")
     enroll_button.click()
+    semester = WebDriverWait(driver,10).until(lambda driver: driver.find_element_by_id("SSR_DUMMY_RECV1$sels$1$$0"))
+    semester.click()
+    clickcont = driver.find_element_by_id("DERIVED_SSS_SCT_SSR_PB_GO")
+    clickcont.click()
     num_field = WebDriverWait(driver, 10).until(lambda driver: driver.find_element_by_id("DERIVED_REGFRM1_CLASS_NBR"))
 
 def class_specific_search(driver, course_name, course_number):
@@ -146,7 +150,7 @@ def shopping_cart(driver):
 		else:
 			startover_button = WebDriverWait(driver, 10).until(lambda driver: driver.find_element_by_id("DERIVED_REGFRM1_SSR_LINK_STARTOVER"))
 			startover_button.click()
-			time.sleep(randint(2,15))
+			time.sleep(randint(2,5))
 			return False
 
 #This part doesnt work if there is a lab
